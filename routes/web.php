@@ -15,16 +15,28 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/add', function () {
-    return \App\User::find(4)->addFriend(1);
+Route::get('/ch', function(){
+    return \App\User::find(5)->add_friend(2);
 });
 
-Route::get('/accept', function () {
-    return \App\User::find(1)->acceptFriend(4);
+Route::get('/add_friend', function () {
+    return \App\User::find(1)->add_friend(4);
 });
 
-Route::get('/friends', function () {
-    return \App\User::find(1)->friends();
+Route::get('/accept_friend', function () {
+    return \App\User::find(4)->accept_friend(1);
+});
+
+Route::get('/pending_friends', function () {
+    return \App\User::find(4)->pending_friend_request();
+});
+
+Route::get('/ids', function () {
+    return \App\User::find(4)->friend_ids();
+});
+
+Route::get('/is', function () {
+    return \App\User::find(1)->is_friends_with(3);
 });
 
 Auth::routes();
